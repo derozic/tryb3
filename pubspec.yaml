@@ -38,13 +38,13 @@ dependencies:
   # Navigation
   go_router: ^13.0.0
 
-  # Firebase
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.15.3
-  cloud_firestore: ^4.13.6
-  firebase_storage: ^11.5.6
-  firebase_messaging: ^14.7.9
-  firebase_analytics: ^10.7.4
+  # Firebase (temporarily commented for initial deployment)
+  # firebase_core: ^2.24.2
+  # firebase_auth: ^4.15.3
+  # cloud_firestore: ^4.13.6
+  # firebase_storage: ^11.5.6
+  # firebase_messaging: ^14.7.9
+  # firebase_analytics: ^10.7.4
 
   # UI & Design
   flutter_svg: ^2.0.9
@@ -71,7 +71,7 @@ dependencies:
 
   # Logging & Monitoring
   logger: ^2.0.2+1
-  sentry_flutter: ^7.14.0
+  # sentry_flutter: ^7.14.0  # Temporarily disabled for initial deployment
 
 dev_dependencies:
   flutter_test:

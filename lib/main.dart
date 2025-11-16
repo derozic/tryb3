@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+// import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'core/constants/app_constants.dart';
-import 'core/services/firebase_service.dart';
+// import 'core/services/firebase_service.dart';
 import 'core/theme/app_theme.dart';
 import 'core/router/app_router.dart';
 
@@ -17,23 +17,29 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   
-  // Initialize Firebase
-  final firebaseService = FirebaseService();
-  await firebaseService.initialize();
+  // Initialize Firebase (temporarily disabled)
+  // final firebaseService = FirebaseService();
+  // await firebaseService.initialize();
   
-  // Initialize Sentry for error tracking
-  await SentryFlutter.init(
-    (options) {
-      options.dsn = 'YOUR_SENTRY_DSN_HERE'; // TODO: Add your Sentry DSN
-      options.environment = const String.fromEnvironment('ENVIRONMENT', defaultValue: 'development');
-      options.enableAutoSessionTracking = true;
-      options.attachScreenshot = true;
-      options.attachViewHierarchy = true;
-    },
-    appRunner: () => runApp(
-      ProviderScope(
-        child: const Tryb3App(),
-      ),
+  // Initialize Sentry for error tracking (temporarily disabled)
+  // await SentryFlutter.init(
+  //   (options) {
+  //     options.dsn = 'YOUR_SENTRY_DSN_HERE'; // TODO: Add your Sentry DSN
+  //     options.environment = const String.fromEnvironment('ENVIRONMENT', defaultValue: 'development');
+  //     options.enableAutoSessionTracking = true;
+  //     options.attachScreenshot = true;
+  //     options.attachViewHierarchy = true;
+  //   },
+  //   appRunner: () => runApp(
+  //     ProviderScope(
+  //       child: const Tryb3App(),
+  //     ),
+  //   ),
+  // );
+  
+  runApp(
+    ProviderScope(
+      child: const Tryb3App(),
     ),
   );
 }
