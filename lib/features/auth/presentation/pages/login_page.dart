@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../shared/widgets/custom_button.dart';
 import '../../../../shared/widgets/custom_text_field.dart';
+import '../../providers/auth_providers.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  ConsumerState<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends ConsumerState<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -35,8 +37,10 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
-      // TODO: Implement login logic
-      await Future.delayed(const Duration(seconds: 2)); // Simulate API call
+      await ref.read(authNotifierProvider.notifier).signInWithEmailAndPassword(
+        _emailController.text.trim(),
+        _passwordController.text,
+      );
       
       if (mounted) {
         context.go('/');
@@ -193,8 +197,32 @@ class _LoginPageState extends State<LoginPage> {
                 
                 // Social Login Buttons
                 OutlinedButton.icon(
-                  onPressed: () {
-                    // TODO: Implement Google sign in
+                  onPressed: _isLoading ? null : () async {
+                    setState(() {
+                      _isLoading = true;
+                    });
+                    
+                    try {
+                      await ref.read(authNotifierProvider.notifier).signInWithGoogle();
+                      if (mounted) {
+                        context.go('/');
+                      }
+                    } catch (e) {
+                      if (mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Google sign in failed: ${e.toString()}'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
+                    } finally {
+                      if (mounted) {
+                        setState(() {
+                          _isLoading = false;
+                        });
+                      }
+                    }
                   },
                   icon: const Icon(Icons.g_mobiledata),
                   label: const Text('Continue with Google'),

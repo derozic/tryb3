@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
+import '../../features/auth/providers/auth_providers.dart';
 import '../../features/social/presentation/pages/home_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../shared/widgets/splash_screen.dart';
@@ -56,16 +57,23 @@ GoRouter appRouter(AppRouterRef ref) {
     
     // Redirect logic for authentication
     redirect: (context, state) {
-      // TODO: Implement authentication check
-      // final isAuthenticated = ref.read(authStateProvider).isAuthenticated;
+      final isAuthenticated = ref.read(isAuthenticatedProvider);
+      final location = state.fullPath ?? '/';
       
-      // if (!isAuthenticated && !_isAuthRoute(state.location)) {
-      //   return '/login';
-      // }
+      // Allow splash screen without authentication check
+      if (location == '/splash') {
+        return null;
+      }
       
-      // if (isAuthenticated && _isAuthRoute(state.location)) {
-      //   return '/';
-      // }
+      // If not authenticated and trying to access protected routes, redirect to login
+      if (!isAuthenticated && !_isAuthRoute(location)) {
+        return '/login';
+      }
+      
+      // If authenticated and trying to access auth routes, redirect to home
+      if (isAuthenticated && _isAuthRoute(location)) {
+        return '/';
+      }
       
       return null;
     },

@@ -22,20 +22,18 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PostModel {
   String get id => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
-  String? get userDisplayName => throw _privateConstructorUsedError;
-  String? get userProfileImage => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  List<String>? get imageUrls => throw _privateConstructorUsedError;
+  String get authorId => throw _privateConstructorUsedError;
+  UserModel get author => throw _privateConstructorUsedError;
+  List<String> get imageUrls => throw _privateConstructorUsedError;
   String? get videoUrl => throw _privateConstructorUsedError;
   int get likesCount => throw _privateConstructorUsedError;
   int get commentsCount => throw _privateConstructorUsedError;
   int get sharesCount => throw _privateConstructorUsedError;
   bool get isLiked => throw _privateConstructorUsedError;
   bool get isBookmarked => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this PostModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,21 +52,21 @@ abstract class $PostModelCopyWith<$Res> {
   @useResult
   $Res call({
     String id,
-    String userId,
-    String username,
-    String? userDisplayName,
-    String? userProfileImage,
     String content,
-    List<String>? imageUrls,
+    String authorId,
+    UserModel author,
+    List<String> imageUrls,
     String? videoUrl,
     int likesCount,
     int commentsCount,
     int sharesCount,
     bool isLiked,
     bool isBookmarked,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    DateTime createdAt,
+    DateTime updatedAt,
   });
+
+  $UserModelCopyWith<$Res> get author;
 }
 
 /// @nodoc
@@ -87,20 +85,18 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? username = null,
-    Object? userDisplayName = freezed,
-    Object? userProfileImage = freezed,
     Object? content = null,
-    Object? imageUrls = freezed,
+    Object? authorId = null,
+    Object? author = null,
+    Object? imageUrls = null,
     Object? videoUrl = freezed,
     Object? likesCount = null,
     Object? commentsCount = null,
     Object? sharesCount = null,
     Object? isLiked = null,
     Object? isBookmarked = null,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(
       _value.copyWith(
@@ -108,30 +104,22 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
                       as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            username: null == username
-                ? _value.username
-                : username // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userDisplayName: freezed == userDisplayName
-                ? _value.userDisplayName
-                : userDisplayName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            userProfileImage: freezed == userProfileImage
-                ? _value.userProfileImage
-                : userProfileImage // ignore: cast_nullable_to_non_nullable
-                      as String?,
             content: null == content
                 ? _value.content
                 : content // ignore: cast_nullable_to_non_nullable
                       as String,
-            imageUrls: freezed == imageUrls
+            authorId: null == authorId
+                ? _value.authorId
+                : authorId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            author: null == author
+                ? _value.author
+                : author // ignore: cast_nullable_to_non_nullable
+                      as UserModel,
+            imageUrls: null == imageUrls
                 ? _value.imageUrls
                 : imageUrls // ignore: cast_nullable_to_non_nullable
-                      as List<String>?,
+                      as List<String>,
             videoUrl: freezed == videoUrl
                 ? _value.videoUrl
                 : videoUrl // ignore: cast_nullable_to_non_nullable
@@ -156,17 +144,27 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
                 ? _value.isBookmarked
                 : isBookmarked // ignore: cast_nullable_to_non_nullable
                       as bool,
-            createdAt: freezed == createdAt
+            createdAt: null == createdAt
                 ? _value.createdAt
                 : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            updatedAt: freezed == updatedAt
+                      as DateTime,
+            updatedAt: null == updatedAt
                 ? _value.updatedAt
                 : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
+                      as DateTime,
           )
           as $Val,
     );
+  }
+
+  /// Create a copy of PostModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get author {
+    return $UserModelCopyWith<$Res>(_value.author, (value) {
+      return _then(_value.copyWith(author: value) as $Val);
+    });
   }
 }
 
@@ -181,21 +179,22 @@ abstract class _$$PostModelImplCopyWith<$Res>
   @useResult
   $Res call({
     String id,
-    String userId,
-    String username,
-    String? userDisplayName,
-    String? userProfileImage,
     String content,
-    List<String>? imageUrls,
+    String authorId,
+    UserModel author,
+    List<String> imageUrls,
     String? videoUrl,
     int likesCount,
     int commentsCount,
     int sharesCount,
     bool isLiked,
     bool isBookmarked,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    DateTime createdAt,
+    DateTime updatedAt,
   });
+
+  @override
+  $UserModelCopyWith<$Res> get author;
 }
 
 /// @nodoc
@@ -213,20 +212,18 @@ class __$$PostModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? username = null,
-    Object? userDisplayName = freezed,
-    Object? userProfileImage = freezed,
     Object? content = null,
-    Object? imageUrls = freezed,
+    Object? authorId = null,
+    Object? author = null,
+    Object? imageUrls = null,
     Object? videoUrl = freezed,
     Object? likesCount = null,
     Object? commentsCount = null,
     Object? sharesCount = null,
     Object? isLiked = null,
     Object? isBookmarked = null,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(
       _$PostModelImpl(
@@ -234,30 +231,22 @@ class __$$PostModelImplCopyWithImpl<$Res>
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
                   as String,
-        userId: null == userId
-            ? _value.userId
-            : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        username: null == username
-            ? _value.username
-            : username // ignore: cast_nullable_to_non_nullable
-                  as String,
-        userDisplayName: freezed == userDisplayName
-            ? _value.userDisplayName
-            : userDisplayName // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        userProfileImage: freezed == userProfileImage
-            ? _value.userProfileImage
-            : userProfileImage // ignore: cast_nullable_to_non_nullable
-                  as String?,
         content: null == content
             ? _value.content
             : content // ignore: cast_nullable_to_non_nullable
                   as String,
-        imageUrls: freezed == imageUrls
+        authorId: null == authorId
+            ? _value.authorId
+            : authorId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        author: null == author
+            ? _value.author
+            : author // ignore: cast_nullable_to_non_nullable
+                  as UserModel,
+        imageUrls: null == imageUrls
             ? _value._imageUrls
             : imageUrls // ignore: cast_nullable_to_non_nullable
-                  as List<String>?,
+                  as List<String>,
         videoUrl: freezed == videoUrl
             ? _value.videoUrl
             : videoUrl // ignore: cast_nullable_to_non_nullable
@@ -282,14 +271,14 @@ class __$$PostModelImplCopyWithImpl<$Res>
             ? _value.isBookmarked
             : isBookmarked // ignore: cast_nullable_to_non_nullable
                   as bool,
-        createdAt: freezed == createdAt
+        createdAt: null == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        updatedAt: freezed == updatedAt
+                  as DateTime,
+        updatedAt: null == updatedAt
             ? _value.updatedAt
             : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
+                  as DateTime,
       ),
     );
   }
@@ -300,20 +289,18 @@ class __$$PostModelImplCopyWithImpl<$Res>
 class _$PostModelImpl extends _PostModel {
   const _$PostModelImpl({
     required this.id,
-    required this.userId,
-    required this.username,
-    this.userDisplayName,
-    this.userProfileImage,
     required this.content,
-    final List<String>? imageUrls,
+    required this.authorId,
+    required this.author,
+    final List<String> imageUrls = const [],
     this.videoUrl,
     this.likesCount = 0,
     this.commentsCount = 0,
     this.sharesCount = 0,
     this.isLiked = false,
     this.isBookmarked = false,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
   }) : _imageUrls = imageUrls,
        super._();
 
@@ -323,23 +310,18 @@ class _$PostModelImpl extends _PostModel {
   @override
   final String id;
   @override
-  final String userId;
-  @override
-  final String username;
-  @override
-  final String? userDisplayName;
-  @override
-  final String? userProfileImage;
-  @override
   final String content;
-  final List<String>? _imageUrls;
   @override
-  List<String>? get imageUrls {
-    final value = _imageUrls;
-    if (value == null) return null;
+  final String authorId;
+  @override
+  final UserModel author;
+  final List<String> _imageUrls;
+  @override
+  @JsonKey()
+  List<String> get imageUrls {
     if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_imageUrls);
   }
 
   @override
@@ -360,13 +342,13 @@ class _$PostModelImpl extends _PostModel {
   @JsonKey()
   final bool isBookmarked;
   @override
-  final DateTime? createdAt;
+  final DateTime createdAt;
   @override
-  final DateTime? updatedAt;
+  final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'PostModel(id: $id, userId: $userId, username: $username, userDisplayName: $userDisplayName, userProfileImage: $userProfileImage, content: $content, imageUrls: $imageUrls, videoUrl: $videoUrl, likesCount: $likesCount, commentsCount: $commentsCount, sharesCount: $sharesCount, isLiked: $isLiked, isBookmarked: $isBookmarked, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'PostModel(id: $id, content: $content, authorId: $authorId, author: $author, imageUrls: $imageUrls, videoUrl: $videoUrl, likesCount: $likesCount, commentsCount: $commentsCount, sharesCount: $sharesCount, isLiked: $isLiked, isBookmarked: $isBookmarked, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -375,14 +357,10 @@ class _$PostModelImpl extends _PostModel {
         (other.runtimeType == runtimeType &&
             other is _$PostModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.userDisplayName, userDisplayName) ||
-                other.userDisplayName == userDisplayName) &&
-            (identical(other.userProfileImage, userProfileImage) ||
-                other.userProfileImage == userProfileImage) &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.authorId, authorId) ||
+                other.authorId == authorId) &&
+            (identical(other.author, author) || other.author == author) &&
             const DeepCollectionEquality().equals(
               other._imageUrls,
               _imageUrls,
@@ -409,11 +387,9 @@ class _$PostModelImpl extends _PostModel {
   int get hashCode => Object.hash(
     runtimeType,
     id,
-    userId,
-    username,
-    userDisplayName,
-    userProfileImage,
     content,
+    authorId,
+    author,
     const DeepCollectionEquality().hash(_imageUrls),
     videoUrl,
     likesCount,
@@ -442,20 +418,18 @@ class _$PostModelImpl extends _PostModel {
 abstract class _PostModel extends PostModel {
   const factory _PostModel({
     required final String id,
-    required final String userId,
-    required final String username,
-    final String? userDisplayName,
-    final String? userProfileImage,
     required final String content,
-    final List<String>? imageUrls,
+    required final String authorId,
+    required final UserModel author,
+    final List<String> imageUrls,
     final String? videoUrl,
     final int likesCount,
     final int commentsCount,
     final int sharesCount,
     final bool isLiked,
     final bool isBookmarked,
-    final DateTime? createdAt,
-    final DateTime? updatedAt,
+    required final DateTime createdAt,
+    required final DateTime updatedAt,
   }) = _$PostModelImpl;
   const _PostModel._() : super._();
 
@@ -465,17 +439,13 @@ abstract class _PostModel extends PostModel {
   @override
   String get id;
   @override
-  String get userId;
-  @override
-  String get username;
-  @override
-  String? get userDisplayName;
-  @override
-  String? get userProfileImage;
-  @override
   String get content;
   @override
-  List<String>? get imageUrls;
+  String get authorId;
+  @override
+  UserModel get author;
+  @override
+  List<String> get imageUrls;
   @override
   String? get videoUrl;
   @override
@@ -489,9 +459,9 @@ abstract class _PostModel extends PostModel {
   @override
   bool get isBookmarked;
   @override
-  DateTime? get createdAt;
+  DateTime get createdAt;
   @override
-  DateTime? get updatedAt;
+  DateTime get updatedAt;
 
   /// Create a copy of PostModel
   /// with the given fields replaced by the non-null parameter values.
