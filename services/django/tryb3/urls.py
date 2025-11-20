@@ -13,6 +13,7 @@ urlpatterns = [
     
     # API endpoints
     path('api/v1/', include('users.urls')),
+    path('api/v1/notifications/', include('notifications.urls')),
     
     # Health check
     path('health/', lambda r: HttpResponse('OK')),
