@@ -48,8 +48,8 @@ dependencies:
 
   # UI & Design
   flutter_svg: ^2.0.9
+  image_picker: ^1.1.2
   cached_network_image: ^3.3.0
-  image_picker: ^1.0.4
   shimmer: ^3.0.0
   animations: ^2.0.8
   cupertino_icons: ^1.0.8
@@ -64,6 +64,9 @@ dependencies:
   device_info_plus: ^9.1.1
   package_info_plus: ^4.2.0
   url_launcher: ^6.2.2
+  
+  # WebSocket
+  web_socket_channel: ^2.4.0
 
   # Date & Time
   intl: ^0.19.0
@@ -93,6 +96,11 @@ dev_dependencies:
   mocktail: ^1.0.2
   patrol: ^3.3.0
   golden_toolkit: ^0.15.0
+  
+  # Component Library Documentation
+  widgetbook: ^3.7.1
+  widgetbook_annotation: ^3.1.0
+  widgetbook_generator: ^3.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

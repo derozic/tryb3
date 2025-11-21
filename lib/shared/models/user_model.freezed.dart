@@ -28,11 +28,15 @@ mixin _$UserModel {
   String? get bio => throw _privateConstructorUsedError;
   String? get profileImageUrl => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
+  UserStatus get status =>
+      throw _privateConstructorUsedError; // New approval status
   int get followersCount => throw _privateConstructorUsedError;
   int get followingCount => throw _privateConstructorUsedError;
   int get postsCount => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get approvedAt => throw _privateConstructorUsedError;
+  String? get approvedBy => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,11 +61,14 @@ abstract class $UserModelCopyWith<$Res> {
     String? bio,
     String? profileImageUrl,
     bool isVerified,
+    UserStatus status,
     int followersCount,
     int followingCount,
     int postsCount,
     DateTime? createdAt,
     DateTime? updatedAt,
+    DateTime? approvedAt,
+    String? approvedBy,
   });
 }
 
@@ -87,11 +94,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? bio = freezed,
     Object? profileImageUrl = freezed,
     Object? isVerified = null,
+    Object? status = null,
     Object? followersCount = null,
     Object? followingCount = null,
     Object? postsCount = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? approvedAt = freezed,
+    Object? approvedBy = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -123,6 +133,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
                 ? _value.isVerified
                 : isVerified // ignore: cast_nullable_to_non_nullable
                       as bool,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as UserStatus,
             followersCount: null == followersCount
                 ? _value.followersCount
                 : followersCount // ignore: cast_nullable_to_non_nullable
@@ -143,6 +157,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
                 ? _value.updatedAt
                 : updatedAt // ignore: cast_nullable_to_non_nullable
                       as DateTime?,
+            approvedAt: freezed == approvedAt
+                ? _value.approvedAt
+                : approvedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            approvedBy: freezed == approvedBy
+                ? _value.approvedBy
+                : approvedBy // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -166,11 +188,14 @@ abstract class _$$UserModelImplCopyWith<$Res>
     String? bio,
     String? profileImageUrl,
     bool isVerified,
+    UserStatus status,
     int followersCount,
     int followingCount,
     int postsCount,
     DateTime? createdAt,
     DateTime? updatedAt,
+    DateTime? approvedAt,
+    String? approvedBy,
   });
 }
 
@@ -195,11 +220,14 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? bio = freezed,
     Object? profileImageUrl = freezed,
     Object? isVerified = null,
+    Object? status = null,
     Object? followersCount = null,
     Object? followingCount = null,
     Object? postsCount = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? approvedAt = freezed,
+    Object? approvedBy = freezed,
   }) {
     return _then(
       _$UserModelImpl(
@@ -231,6 +259,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
             ? _value.isVerified
             : isVerified // ignore: cast_nullable_to_non_nullable
                   as bool,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as UserStatus,
         followersCount: null == followersCount
             ? _value.followersCount
             : followersCount // ignore: cast_nullable_to_non_nullable
@@ -251,6 +283,14 @@ class __$$UserModelImplCopyWithImpl<$Res>
             ? _value.updatedAt
             : updatedAt // ignore: cast_nullable_to_non_nullable
                   as DateTime?,
+        approvedAt: freezed == approvedAt
+            ? _value.approvedAt
+            : approvedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        approvedBy: freezed == approvedBy
+            ? _value.approvedBy
+            : approvedBy // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -267,11 +307,14 @@ class _$UserModelImpl extends _UserModel {
     this.bio,
     this.profileImageUrl,
     this.isVerified = false,
+    this.status = UserStatus.pending,
     this.followersCount = 0,
     this.followingCount = 0,
     this.postsCount = 0,
     this.createdAt,
     this.updatedAt,
+    this.approvedAt,
+    this.approvedBy,
   }) : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -294,6 +337,10 @@ class _$UserModelImpl extends _UserModel {
   final bool isVerified;
   @override
   @JsonKey()
+  final UserStatus status;
+  // New approval status
+  @override
+  @JsonKey()
   final int followersCount;
   @override
   @JsonKey()
@@ -305,10 +352,14 @@ class _$UserModelImpl extends _UserModel {
   final DateTime? createdAt;
   @override
   final DateTime? updatedAt;
+  @override
+  final DateTime? approvedAt;
+  @override
+  final String? approvedBy;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, username: $username, displayName: $displayName, bio: $bio, profileImageUrl: $profileImageUrl, isVerified: $isVerified, followersCount: $followersCount, followingCount: $followingCount, postsCount: $postsCount, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'UserModel(id: $id, email: $email, username: $username, displayName: $displayName, bio: $bio, profileImageUrl: $profileImageUrl, isVerified: $isVerified, status: $status, followersCount: $followersCount, followingCount: $followingCount, postsCount: $postsCount, createdAt: $createdAt, updatedAt: $updatedAt, approvedAt: $approvedAt, approvedBy: $approvedBy)';
   }
 
   @override
@@ -327,6 +378,7 @@ class _$UserModelImpl extends _UserModel {
                 other.profileImageUrl == profileImageUrl) &&
             (identical(other.isVerified, isVerified) ||
                 other.isVerified == isVerified) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.followersCount, followersCount) ||
                 other.followersCount == followersCount) &&
             (identical(other.followingCount, followingCount) ||
@@ -336,7 +388,11 @@ class _$UserModelImpl extends _UserModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.approvedAt, approvedAt) ||
+                other.approvedAt == approvedAt) &&
+            (identical(other.approvedBy, approvedBy) ||
+                other.approvedBy == approvedBy));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -350,11 +406,14 @@ class _$UserModelImpl extends _UserModel {
     bio,
     profileImageUrl,
     isVerified,
+    status,
     followersCount,
     followingCount,
     postsCount,
     createdAt,
     updatedAt,
+    approvedAt,
+    approvedBy,
   );
 
   /// Create a copy of UserModel
@@ -380,11 +439,14 @@ abstract class _UserModel extends UserModel {
     final String? bio,
     final String? profileImageUrl,
     final bool isVerified,
+    final UserStatus status,
     final int followersCount,
     final int followingCount,
     final int postsCount,
     final DateTime? createdAt,
     final DateTime? updatedAt,
+    final DateTime? approvedAt,
+    final String? approvedBy,
   }) = _$UserModelImpl;
   const _UserModel._() : super._();
 
@@ -406,6 +468,8 @@ abstract class _UserModel extends UserModel {
   @override
   bool get isVerified;
   @override
+  UserStatus get status; // New approval status
+  @override
   int get followersCount;
   @override
   int get followingCount;
@@ -415,6 +479,10 @@ abstract class _UserModel extends UserModel {
   DateTime? get createdAt;
   @override
   DateTime? get updatedAt;
+  @override
+  DateTime? get approvedAt;
+  @override
+  String? get approvedBy;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
