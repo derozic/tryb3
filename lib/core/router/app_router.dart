@@ -4,8 +4,12 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
+import '../../features/auth/providers/auth_providers.dart';
 import '../../features/social/presentation/pages/home_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
+import '../../features/events/presentation/pages/calendar_page.dart';
+import '../../features/events/presentation/pages/create_event_page.dart';
+import '../../features/events/presentation/pages/event_detail_page.dart';
 import '../../shared/widgets/splash_screen.dart';
 
 part 'app_router.g.dart';
@@ -50,22 +54,48 @@ GoRouter appRouter(AppRouterRef ref) {
             name: 'profile',
             builder: (context, state) => const ProfilePage(),
           ),
+          GoRoute(
+            path: '/calendar',
+            name: 'calendar',
+            builder: (context, state) => const CalendarPage(),
+          ),
+          GoRoute(
+            path: '/events/create',
+            name: 'create-event',
+            builder: (context, state) => CreateEventPage(
+              eventId: state.extra as String?,
+            ),
+          ),
+          GoRoute(
+            path: '/events/:id',
+            name: 'event-detail',
+            builder: (context, state) => EventDetailPage(
+              eventId: state.pathParameters['id']!,
+            ),
+          ),
         ],
       ),
     ],
     
     // Redirect logic for authentication
     redirect: (context, state) {
-      // TODO: Implement authentication check
-      // final isAuthenticated = ref.read(authStateProvider).isAuthenticated;
+      final isAuthenticated = ref.read(isAuthenticatedProvider);
+      final location = state.fullPath ?? '/';
       
-      // if (!isAuthenticated && !_isAuthRoute(state.location)) {
-      //   return '/login';
-      // }
+      // Allow splash screen without authentication check
+      if (location == '/splash') {
+        return null;
+      }
       
-      // if (isAuthenticated && _isAuthRoute(state.location)) {
-      //   return '/';
-      // }
+      // If not authenticated and trying to access protected routes, redirect to login
+      if (!isAuthenticated && !_isAuthRoute(location)) {
+        return '/login';
+      }
+      
+      // If authenticated and trying to access auth routes, redirect to home
+      if (isAuthenticated && _isAuthRoute(location)) {
+        return '/';
+      }
       
       return null;
     },
@@ -137,6 +167,9 @@ class _MainAppShellState extends State<MainAppShell> {
               context.go('/');
               break;
             case 1:
+              context.go('/calendar');
+              break;
+            case 2:
               context.go('/profile');
               break;
           }
@@ -146,6 +179,11 @@ class _MainAppShellState extends State<MainAppShell> {
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
             label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.calendar_today_outlined),
+            selectedIcon: Icon(Icons.calendar_today),
+            label: 'Calendar',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),
