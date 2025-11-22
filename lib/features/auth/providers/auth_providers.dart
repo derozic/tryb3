@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../shared/models/user_model.dart';
+import '../../shared/models/user_model.dart';
 import '../data/auth_repository.dart';
 
 part 'auth_providers.g.dart';
@@ -7,7 +7,7 @@ part 'auth_providers.g.dart';
 @Riverpod(keepAlive: true)
 class AuthNotifier extends _$AuthNotifier {
   @override
-  UserModel? build() {
+  User? build() {
     _initializeAuth();
     return null;
   }

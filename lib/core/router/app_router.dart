@@ -7,6 +7,9 @@ import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/auth/providers/auth_providers.dart';
 import '../../features/social/presentation/pages/home_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
+import '../../features/events/presentation/pages/calendar_page.dart';
+import '../../features/events/presentation/pages/create_event_page.dart';
+import '../../features/events/presentation/pages/event_detail_page.dart';
 import '../../shared/widgets/splash_screen.dart';
 
 part 'app_router.g.dart';
@@ -50,6 +53,25 @@ GoRouter appRouter(AppRouterRef ref) {
             path: '/profile',
             name: 'profile',
             builder: (context, state) => const ProfilePage(),
+          ),
+          GoRoute(
+            path: '/calendar',
+            name: 'calendar',
+            builder: (context, state) => const CalendarPage(),
+          ),
+          GoRoute(
+            path: '/events/create',
+            name: 'create-event',
+            builder: (context, state) => CreateEventPage(
+              eventId: state.extra as String?,
+            ),
+          ),
+          GoRoute(
+            path: '/events/:id',
+            name: 'event-detail',
+            builder: (context, state) => EventDetailPage(
+              eventId: state.pathParameters['id']!,
+            ),
           ),
         ],
       ),
@@ -145,6 +167,9 @@ class _MainAppShellState extends State<MainAppShell> {
               context.go('/');
               break;
             case 1:
+              context.go('/calendar');
+              break;
+            case 2:
               context.go('/profile');
               break;
           }
@@ -154,6 +179,11 @@ class _MainAppShellState extends State<MainAppShell> {
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
             label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.calendar_today_outlined),
+            selectedIcon: Icon(Icons.calendar_today),
+            label: 'Calendar',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),
