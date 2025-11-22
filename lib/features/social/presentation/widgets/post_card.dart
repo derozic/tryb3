@@ -134,7 +134,7 @@ class PostCard extends ConsumerWidget {
                   icon: Icons.chat_bubble_outline,
                   label: post.commentsCount.toString(),
                   onPressed: () {
-                    // TODO: Navigate to comments
+                    Navigator.pushNamed(context, '/posts/${post.id}');
                   },
                 ),
                 const SizedBox(width: 24),

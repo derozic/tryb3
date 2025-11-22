@@ -24,7 +24,7 @@ class HomePage extends ConsumerWidget {
           ),
           IconButton(
             onPressed: () {
-              // TODO: Navigate to search
+              Navigator.pushNamed(context, '/discover');
             },
             icon: const Icon(Icons.search),
           ),

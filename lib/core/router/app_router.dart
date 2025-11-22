@@ -10,6 +10,10 @@ import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/events/presentation/pages/calendar_page.dart';
 import '../../features/events/presentation/pages/create_event_page.dart';
 import '../../features/events/presentation/pages/event_detail_page.dart';
+import '../../features/social/presentation/pages/discover_page.dart';
+import '../../features/social/presentation/pages/post_detail_page.dart';
+import '../../features/chat/presentation/pages/chat_list_page.dart';
+import '../../features/chat/presentation/pages/chat_page.dart';
 import '../../shared/widgets/splash_screen.dart';
 
 part 'app_router.g.dart';
@@ -71,6 +75,30 @@ GoRouter appRouter(AppRouterRef ref) {
             name: 'event-detail',
             builder: (context, state) => EventDetailPage(
               eventId: state.pathParameters['id']!,
+            ),
+          ),
+          GoRoute(
+            path: '/discover',
+            name: 'discover',
+            builder: (context, state) => const DiscoverPage(),
+          ),
+          GoRoute(
+            path: '/posts/:id',
+            name: 'post-detail',
+            builder: (context, state) => PostDetailPage(
+              postId: state.pathParameters['id']!,
+            ),
+          ),
+          GoRoute(
+            path: '/chat',
+            name: 'chat-list',
+            builder: (context, state) => const ChatListPage(),
+          ),
+          GoRoute(
+            path: '/chat/:id',
+            name: 'chat',
+            builder: (context, state) => ChatPage(
+              chatId: state.pathParameters['id']!,
             ),
           ),
         ],
@@ -167,9 +195,15 @@ class _MainAppShellState extends State<MainAppShell> {
               context.go('/');
               break;
             case 1:
-              context.go('/calendar');
+              context.go('/discover');
               break;
             case 2:
+              context.go('/chat');
+              break;
+            case 3:
+              context.go('/calendar');
+              break;
+            case 4:
               context.go('/profile');
               break;
           }
@@ -179,6 +213,16 @@ class _MainAppShellState extends State<MainAppShell> {
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
             label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.explore_outlined),
+            selectedIcon: Icon(Icons.explore),
+            label: 'Discover',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.chat_bubble_outline),
+            selectedIcon: Icon(Icons.chat_bubble),
+            label: 'Messages',
           ),
           NavigationDestination(
             icon: Icon(Icons.calendar_today_outlined),
