@@ -14,6 +14,7 @@ import '../../features/social/presentation/pages/discover_page.dart';
 import '../../features/social/presentation/pages/post_detail_page.dart';
 import '../../features/chat/presentation/pages/chat_list_page.dart';
 import '../../features/chat/presentation/pages/chat_page.dart';
+import '../../features/network/presentation/pages/network_page.dart';
 import '../../shared/widgets/splash_screen.dart';
 
 part 'app_router.g.dart';
@@ -100,6 +101,11 @@ GoRouter appRouter(AppRouterRef ref) {
             builder: (context, state) => ChatPage(
               chatId: state.pathParameters['id']!,
             ),
+          ),
+          GoRoute(
+            path: '/network',
+            name: 'network',
+            builder: (context, state) => const NetworkPage(),
           ),
         ],
       ),
