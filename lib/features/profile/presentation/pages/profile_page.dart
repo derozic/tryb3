@@ -83,6 +83,14 @@ class ProfilePage extends ConsumerWidget {
                 _buildStatCard('Following', user?.followingCount.toString() ?? '0'),
               ],
             ),
+            const SizedBox(height: 32),
+            ElevatedButton.icon(
+              onPressed: () {
+                context.push('/network');
+              },
+              icon: const Icon(Icons.people),
+              label: const Text('Manage Network'),
+            ),
           ],
         ),
       ),
