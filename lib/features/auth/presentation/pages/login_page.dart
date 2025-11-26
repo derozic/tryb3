@@ -176,6 +176,19 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   child: const Text('Sign In'),
                 ),
                 
+                const SizedBox(height: 12),
+                
+                // Demo Calendar Button
+                OutlinedButton(
+                  onPressed: () => context.go('/calendar'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    backgroundColor: Colors.orange.withOpacity(0.1),
+                    side: const BorderSide(color: Colors.orange, width: 2),
+                  ),
+                  child: const Text('🗓️ Demo: View Calendar', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.orange)),
+                ),
+                
                 const SizedBox(height: 24),
                 
                 // Divider
