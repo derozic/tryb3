@@ -26,12 +26,21 @@ class MockAuthRepository implements AuthRepository {
         username: 'testuser',
         displayName: 'Test User',
         bio: 'Hello, I\'m a test user!',
+        status: UserStatus.approved, // Approved user for testing
         followersCount: 42,
         followingCount: 15,
         postsCount: 8,
         isVerified: false,
         createdAt: DateTime.parse('2024-01-01T00:00:00Z'),
+        approvedAt: DateTime.parse('2024-01-02T00:00:00Z'),
+        approvedBy: 'admin@tryb3.com',
       );
+      
+      // Check if user is approved
+      if (_currentUser!.status != UserStatus.approved) {
+        throw Exception('Your account is pending approval. Please wait for admin verification.');
+      }
+      
       return _currentUser!;
     }
     

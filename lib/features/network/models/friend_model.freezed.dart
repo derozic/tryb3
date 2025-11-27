@@ -24,7 +24,7 @@ mixin _$FriendConnection {
   String get id => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   String get friendId => throw _privateConstructorUsedError;
-  User get friend => throw _privateConstructorUsedError;
+  UserModel get friend => throw _privateConstructorUsedError;
   FriendshipStatus get status => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime? get acceptedAt => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $FriendConnectionCopyWith<$Res> {
     String id,
     String userId,
     String friendId,
-    User friend,
+    UserModel friend,
     FriendshipStatus status,
     DateTime createdAt,
     DateTime? acceptedAt,
@@ -65,8 +65,6 @@ abstract class $FriendConnectionCopyWith<$Res> {
     bool isCloseFriend,
     Map<String, dynamic>? metadata,
   });
-
-  $UserCopyWith<$Res> get friend;
 }
 
 /// @nodoc
@@ -87,7 +85,7 @@ class _$FriendConnectionCopyWithImpl<$Res, $Val extends FriendConnection>
     Object? id = null,
     Object? userId = null,
     Object? friendId = null,
-    Object? friend = null,
+    Object? friend = freezed,
     Object? status = null,
     Object? createdAt = null,
     Object? acceptedAt = freezed,
@@ -111,10 +109,10 @@ class _$FriendConnectionCopyWithImpl<$Res, $Val extends FriendConnection>
                 ? _value.friendId
                 : friendId // ignore: cast_nullable_to_non_nullable
                       as String,
-            friend: null == friend
+            friend: freezed == friend
                 ? _value.friend
                 : friend // ignore: cast_nullable_to_non_nullable
-                      as User,
+                      as UserModel,
             status: null == status
                 ? _value.status
                 : status // ignore: cast_nullable_to_non_nullable
@@ -151,16 +149,6 @@ class _$FriendConnectionCopyWithImpl<$Res, $Val extends FriendConnection>
           as $Val,
     );
   }
-
-  /// Create a copy of FriendConnection
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get friend {
-    return $UserCopyWith<$Res>(_value.friend, (value) {
-      return _then(_value.copyWith(friend: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -176,7 +164,7 @@ abstract class _$$FriendConnectionImplCopyWith<$Res>
     String id,
     String userId,
     String friendId,
-    User friend,
+    UserModel friend,
     FriendshipStatus status,
     DateTime createdAt,
     DateTime? acceptedAt,
@@ -186,9 +174,6 @@ abstract class _$$FriendConnectionImplCopyWith<$Res>
     bool isCloseFriend,
     Map<String, dynamic>? metadata,
   });
-
-  @override
-  $UserCopyWith<$Res> get friend;
 }
 
 /// @nodoc
@@ -208,7 +193,7 @@ class __$$FriendConnectionImplCopyWithImpl<$Res>
     Object? id = null,
     Object? userId = null,
     Object? friendId = null,
-    Object? friend = null,
+    Object? friend = freezed,
     Object? status = null,
     Object? createdAt = null,
     Object? acceptedAt = freezed,
@@ -232,10 +217,10 @@ class __$$FriendConnectionImplCopyWithImpl<$Res>
             ? _value.friendId
             : friendId // ignore: cast_nullable_to_non_nullable
                   as String,
-        friend: null == friend
+        friend: freezed == friend
             ? _value.friend
             : friend // ignore: cast_nullable_to_non_nullable
-                  as User,
+                  as UserModel,
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
@@ -301,7 +286,7 @@ class _$FriendConnectionImpl implements _FriendConnection {
   @override
   final String friendId;
   @override
-  final User friend;
+  final UserModel friend;
   @override
   final FriendshipStatus status;
   @override
@@ -343,7 +328,7 @@ class _$FriendConnectionImpl implements _FriendConnection {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.friendId, friendId) ||
                 other.friendId == friendId) &&
-            (identical(other.friend, friend) || other.friend == friend) &&
+            const DeepCollectionEquality().equals(other.friend, friend) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -366,7 +351,7 @@ class _$FriendConnectionImpl implements _FriendConnection {
     id,
     userId,
     friendId,
-    friend,
+    const DeepCollectionEquality().hash(friend),
     status,
     createdAt,
     acceptedAt,
@@ -399,7 +384,7 @@ abstract class _FriendConnection implements FriendConnection {
     required final String id,
     required final String userId,
     required final String friendId,
-    required final User friend,
+    required final UserModel friend,
     required final FriendshipStatus status,
     required final DateTime createdAt,
     final DateTime? acceptedAt,
@@ -420,7 +405,7 @@ abstract class _FriendConnection implements FriendConnection {
   @override
   String get friendId;
   @override
-  User get friend;
+  UserModel get friend;
   @override
   FriendshipStatus get status;
   @override
@@ -454,9 +439,9 @@ FriendRequest _$FriendRequestFromJson(Map<String, dynamic> json) {
 mixin _$FriendRequest {
   String get id => throw _privateConstructorUsedError;
   String get senderId => throw _privateConstructorUsedError;
-  User get sender => throw _privateConstructorUsedError;
+  UserModel get sender => throw _privateConstructorUsedError;
   String get receiverId => throw _privateConstructorUsedError;
-  User get receiver => throw _privateConstructorUsedError;
+  UserModel get receiver => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   FriendRequestStatus get status => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -483,18 +468,15 @@ abstract class $FriendRequestCopyWith<$Res> {
   $Res call({
     String id,
     String senderId,
-    User sender,
+    UserModel sender,
     String receiverId,
-    User receiver,
+    UserModel receiver,
     String? message,
     FriendRequestStatus status,
     DateTime createdAt,
     DateTime? respondedAt,
     Map<String, dynamic>? metadata,
   });
-
-  $UserCopyWith<$Res> get sender;
-  $UserCopyWith<$Res> get receiver;
 }
 
 /// @nodoc
@@ -514,9 +496,9 @@ class _$FriendRequestCopyWithImpl<$Res, $Val extends FriendRequest>
   $Res call({
     Object? id = null,
     Object? senderId = null,
-    Object? sender = null,
+    Object? sender = freezed,
     Object? receiverId = null,
-    Object? receiver = null,
+    Object? receiver = freezed,
     Object? message = freezed,
     Object? status = null,
     Object? createdAt = null,
@@ -533,18 +515,18 @@ class _$FriendRequestCopyWithImpl<$Res, $Val extends FriendRequest>
                 ? _value.senderId
                 : senderId // ignore: cast_nullable_to_non_nullable
                       as String,
-            sender: null == sender
+            sender: freezed == sender
                 ? _value.sender
                 : sender // ignore: cast_nullable_to_non_nullable
-                      as User,
+                      as UserModel,
             receiverId: null == receiverId
                 ? _value.receiverId
                 : receiverId // ignore: cast_nullable_to_non_nullable
                       as String,
-            receiver: null == receiver
+            receiver: freezed == receiver
                 ? _value.receiver
                 : receiver // ignore: cast_nullable_to_non_nullable
-                      as User,
+                      as UserModel,
             message: freezed == message
                 ? _value.message
                 : message // ignore: cast_nullable_to_non_nullable
@@ -569,26 +551,6 @@ class _$FriendRequestCopyWithImpl<$Res, $Val extends FriendRequest>
           as $Val,
     );
   }
-
-  /// Create a copy of FriendRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get sender {
-    return $UserCopyWith<$Res>(_value.sender, (value) {
-      return _then(_value.copyWith(sender: value) as $Val);
-    });
-  }
-
-  /// Create a copy of FriendRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get receiver {
-    return $UserCopyWith<$Res>(_value.receiver, (value) {
-      return _then(_value.copyWith(receiver: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -603,20 +565,15 @@ abstract class _$$FriendRequestImplCopyWith<$Res>
   $Res call({
     String id,
     String senderId,
-    User sender,
+    UserModel sender,
     String receiverId,
-    User receiver,
+    UserModel receiver,
     String? message,
     FriendRequestStatus status,
     DateTime createdAt,
     DateTime? respondedAt,
     Map<String, dynamic>? metadata,
   });
-
-  @override
-  $UserCopyWith<$Res> get sender;
-  @override
-  $UserCopyWith<$Res> get receiver;
 }
 
 /// @nodoc
@@ -635,9 +592,9 @@ class __$$FriendRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? senderId = null,
-    Object? sender = null,
+    Object? sender = freezed,
     Object? receiverId = null,
-    Object? receiver = null,
+    Object? receiver = freezed,
     Object? message = freezed,
     Object? status = null,
     Object? createdAt = null,
@@ -654,18 +611,18 @@ class __$$FriendRequestImplCopyWithImpl<$Res>
             ? _value.senderId
             : senderId // ignore: cast_nullable_to_non_nullable
                   as String,
-        sender: null == sender
+        sender: freezed == sender
             ? _value.sender
             : sender // ignore: cast_nullable_to_non_nullable
-                  as User,
+                  as UserModel,
         receiverId: null == receiverId
             ? _value.receiverId
             : receiverId // ignore: cast_nullable_to_non_nullable
                   as String,
-        receiver: null == receiver
+        receiver: freezed == receiver
             ? _value.receiver
             : receiver // ignore: cast_nullable_to_non_nullable
-                  as User,
+                  as UserModel,
         message: freezed == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
@@ -715,11 +672,11 @@ class _$FriendRequestImpl implements _FriendRequest {
   @override
   final String senderId;
   @override
-  final User sender;
+  final UserModel sender;
   @override
   final String receiverId;
   @override
-  final User receiver;
+  final UserModel receiver;
   @override
   final String? message;
   @override
@@ -751,11 +708,10 @@ class _$FriendRequestImpl implements _FriendRequest {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.senderId, senderId) ||
                 other.senderId == senderId) &&
-            (identical(other.sender, sender) || other.sender == sender) &&
+            const DeepCollectionEquality().equals(other.sender, sender) &&
             (identical(other.receiverId, receiverId) ||
                 other.receiverId == receiverId) &&
-            (identical(other.receiver, receiver) ||
-                other.receiver == receiver) &&
+            const DeepCollectionEquality().equals(other.receiver, receiver) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.createdAt, createdAt) ||
@@ -771,9 +727,9 @@ class _$FriendRequestImpl implements _FriendRequest {
     runtimeType,
     id,
     senderId,
-    sender,
+    const DeepCollectionEquality().hash(sender),
     receiverId,
-    receiver,
+    const DeepCollectionEquality().hash(receiver),
     message,
     status,
     createdAt,
@@ -799,9 +755,9 @@ abstract class _FriendRequest implements FriendRequest {
   const factory _FriendRequest({
     required final String id,
     required final String senderId,
-    required final User sender,
+    required final UserModel sender,
     required final String receiverId,
-    required final User receiver,
+    required final UserModel receiver,
     final String? message,
     required final FriendRequestStatus status,
     required final DateTime createdAt,
@@ -817,11 +773,11 @@ abstract class _FriendRequest implements FriendRequest {
   @override
   String get senderId;
   @override
-  User get sender;
+  UserModel get sender;
   @override
   String get receiverId;
   @override
-  User get receiver;
+  UserModel get receiver;
   @override
   String? get message;
   @override
@@ -1025,9 +981,9 @@ UserSuggestion _$UserSuggestionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserSuggestion {
-  User get user => throw _privateConstructorUsedError;
+  UserModel get user => throw _privateConstructorUsedError;
   SuggestionReason get reason => throw _privateConstructorUsedError;
-  List<User> get mutualFriends => throw _privateConstructorUsedError;
+  List<UserModel> get mutualFriends => throw _privateConstructorUsedError;
   int get mutualFriendsCount => throw _privateConstructorUsedError;
   double get relevanceScore => throw _privateConstructorUsedError;
 
@@ -1049,14 +1005,12 @@ abstract class $UserSuggestionCopyWith<$Res> {
   ) = _$UserSuggestionCopyWithImpl<$Res, UserSuggestion>;
   @useResult
   $Res call({
-    User user,
+    UserModel user,
     SuggestionReason reason,
-    List<User> mutualFriends,
+    List<UserModel> mutualFriends,
     int mutualFriendsCount,
     double relevanceScore,
   });
-
-  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -1074,7 +1028,7 @@ class _$UserSuggestionCopyWithImpl<$Res, $Val extends UserSuggestion>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
     Object? reason = null,
     Object? mutualFriends = null,
     Object? mutualFriendsCount = null,
@@ -1082,10 +1036,10 @@ class _$UserSuggestionCopyWithImpl<$Res, $Val extends UserSuggestion>
   }) {
     return _then(
       _value.copyWith(
-            user: null == user
+            user: freezed == user
                 ? _value.user
                 : user // ignore: cast_nullable_to_non_nullable
-                      as User,
+                      as UserModel,
             reason: null == reason
                 ? _value.reason
                 : reason // ignore: cast_nullable_to_non_nullable
@@ -1093,7 +1047,7 @@ class _$UserSuggestionCopyWithImpl<$Res, $Val extends UserSuggestion>
             mutualFriends: null == mutualFriends
                 ? _value.mutualFriends
                 : mutualFriends // ignore: cast_nullable_to_non_nullable
-                      as List<User>,
+                      as List<UserModel>,
             mutualFriendsCount: null == mutualFriendsCount
                 ? _value.mutualFriendsCount
                 : mutualFriendsCount // ignore: cast_nullable_to_non_nullable
@@ -1105,16 +1059,6 @@ class _$UserSuggestionCopyWithImpl<$Res, $Val extends UserSuggestion>
           )
           as $Val,
     );
-  }
-
-  /// Create a copy of UserSuggestion
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
   }
 }
 
@@ -1128,15 +1072,12 @@ abstract class _$$UserSuggestionImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    User user,
+    UserModel user,
     SuggestionReason reason,
-    List<User> mutualFriends,
+    List<UserModel> mutualFriends,
     int mutualFriendsCount,
     double relevanceScore,
   });
-
-  @override
-  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -1153,7 +1094,7 @@ class __$$UserSuggestionImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
     Object? reason = null,
     Object? mutualFriends = null,
     Object? mutualFriendsCount = null,
@@ -1161,10 +1102,10 @@ class __$$UserSuggestionImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$UserSuggestionImpl(
-        user: null == user
+        user: freezed == user
             ? _value.user
             : user // ignore: cast_nullable_to_non_nullable
-                  as User,
+                  as UserModel,
         reason: null == reason
             ? _value.reason
             : reason // ignore: cast_nullable_to_non_nullable
@@ -1172,7 +1113,7 @@ class __$$UserSuggestionImplCopyWithImpl<$Res>
         mutualFriends: null == mutualFriends
             ? _value._mutualFriends
             : mutualFriends // ignore: cast_nullable_to_non_nullable
-                  as List<User>,
+                  as List<UserModel>,
         mutualFriendsCount: null == mutualFriendsCount
             ? _value.mutualFriendsCount
             : mutualFriendsCount // ignore: cast_nullable_to_non_nullable
@@ -1192,7 +1133,7 @@ class _$UserSuggestionImpl implements _UserSuggestion {
   const _$UserSuggestionImpl({
     required this.user,
     required this.reason,
-    final List<User> mutualFriends = const [],
+    final List<UserModel> mutualFriends = const [],
     this.mutualFriendsCount = 0,
     this.relevanceScore = 0.0,
   }) : _mutualFriends = mutualFriends;
@@ -1201,13 +1142,13 @@ class _$UserSuggestionImpl implements _UserSuggestion {
       _$$UserSuggestionImplFromJson(json);
 
   @override
-  final User user;
+  final UserModel user;
   @override
   final SuggestionReason reason;
-  final List<User> _mutualFriends;
+  final List<UserModel> _mutualFriends;
   @override
   @JsonKey()
-  List<User> get mutualFriends {
+  List<UserModel> get mutualFriends {
     if (_mutualFriends is EqualUnmodifiableListView) return _mutualFriends;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_mutualFriends);
@@ -1230,7 +1171,7 @@ class _$UserSuggestionImpl implements _UserSuggestion {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserSuggestionImpl &&
-            (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality().equals(other.user, user) &&
             (identical(other.reason, reason) || other.reason == reason) &&
             const DeepCollectionEquality().equals(
               other._mutualFriends,
@@ -1246,7 +1187,7 @@ class _$UserSuggestionImpl implements _UserSuggestion {
   @override
   int get hashCode => Object.hash(
     runtimeType,
-    user,
+    const DeepCollectionEquality().hash(user),
     reason,
     const DeepCollectionEquality().hash(_mutualFriends),
     mutualFriendsCount,
@@ -1272,9 +1213,9 @@ class _$UserSuggestionImpl implements _UserSuggestion {
 
 abstract class _UserSuggestion implements UserSuggestion {
   const factory _UserSuggestion({
-    required final User user,
+    required final UserModel user,
     required final SuggestionReason reason,
-    final List<User> mutualFriends,
+    final List<UserModel> mutualFriends,
     final int mutualFriendsCount,
     final double relevanceScore,
   }) = _$UserSuggestionImpl;
@@ -1283,11 +1224,11 @@ abstract class _UserSuggestion implements UserSuggestion {
       _$UserSuggestionImpl.fromJson;
 
   @override
-  User get user;
+  UserModel get user;
   @override
   SuggestionReason get reason;
   @override
-  List<User> get mutualFriends;
+  List<UserModel> get mutualFriends;
   @override
   int get mutualFriendsCount;
   @override
@@ -1312,7 +1253,7 @@ mixin _$NetworkStats {
   int get sentRequestsCount => throw _privateConstructorUsedError;
   int get mutualConnectionsCount => throw _privateConstructorUsedError;
   int get blockedUsersCount => throw _privateConstructorUsedError;
-  List<User> get recentConnections => throw _privateConstructorUsedError;
+  List<UserModel> get recentConnections => throw _privateConstructorUsedError;
   List<UserSuggestion> get suggestions => throw _privateConstructorUsedError;
 
   /// Serializes this NetworkStats to a JSON map.
@@ -1338,7 +1279,7 @@ abstract class $NetworkStatsCopyWith<$Res> {
     int sentRequestsCount,
     int mutualConnectionsCount,
     int blockedUsersCount,
-    List<User> recentConnections,
+    List<UserModel> recentConnections,
     List<UserSuggestion> suggestions,
   });
 }
@@ -1391,7 +1332,7 @@ class _$NetworkStatsCopyWithImpl<$Res, $Val extends NetworkStats>
             recentConnections: null == recentConnections
                 ? _value.recentConnections
                 : recentConnections // ignore: cast_nullable_to_non_nullable
-                      as List<User>,
+                      as List<UserModel>,
             suggestions: null == suggestions
                 ? _value.suggestions
                 : suggestions // ignore: cast_nullable_to_non_nullable
@@ -1417,7 +1358,7 @@ abstract class _$$NetworkStatsImplCopyWith<$Res>
     int sentRequestsCount,
     int mutualConnectionsCount,
     int blockedUsersCount,
-    List<User> recentConnections,
+    List<UserModel> recentConnections,
     List<UserSuggestion> suggestions,
   });
 }
@@ -1469,7 +1410,7 @@ class __$$NetworkStatsImplCopyWithImpl<$Res>
         recentConnections: null == recentConnections
             ? _value._recentConnections
             : recentConnections // ignore: cast_nullable_to_non_nullable
-                  as List<User>,
+                  as List<UserModel>,
         suggestions: null == suggestions
             ? _value._suggestions
             : suggestions // ignore: cast_nullable_to_non_nullable
@@ -1488,7 +1429,7 @@ class _$NetworkStatsImpl implements _NetworkStats {
     required this.sentRequestsCount,
     required this.mutualConnectionsCount,
     required this.blockedUsersCount,
-    final List<User> recentConnections = const [],
+    final List<UserModel> recentConnections = const [],
     final List<UserSuggestion> suggestions = const [],
   }) : _recentConnections = recentConnections,
        _suggestions = suggestions;
@@ -1506,10 +1447,10 @@ class _$NetworkStatsImpl implements _NetworkStats {
   final int mutualConnectionsCount;
   @override
   final int blockedUsersCount;
-  final List<User> _recentConnections;
+  final List<UserModel> _recentConnections;
   @override
   @JsonKey()
-  List<User> get recentConnections {
+  List<UserModel> get recentConnections {
     if (_recentConnections is EqualUnmodifiableListView)
       return _recentConnections;
     // ignore: implicit_dynamic_type
@@ -1589,7 +1530,7 @@ abstract class _NetworkStats implements NetworkStats {
     required final int sentRequestsCount,
     required final int mutualConnectionsCount,
     required final int blockedUsersCount,
-    final List<User> recentConnections,
+    final List<UserModel> recentConnections,
     final List<UserSuggestion> suggestions,
   }) = _$NetworkStatsImpl;
 
@@ -1607,7 +1548,7 @@ abstract class _NetworkStats implements NetworkStats {
   @override
   int get blockedUsersCount;
   @override
-  List<User> get recentConnections;
+  List<UserModel> get recentConnections;
   @override
   List<UserSuggestion> get suggestions;
 

@@ -99,6 +99,9 @@ class WebSocketService {
   
   // Public getters
   Stream<WebSocketEvent> get eventStream => _eventStreamController.stream;
+  Stream<Map<String, dynamic>> get messageStream => _eventStreamController.stream
+      .where((event) => event.data.isNotEmpty)
+      .map((event) => event.data);
   Stream<WebSocketConnectionState> get connectionStateStream => _connectionStateController.stream;
   WebSocketConnectionState get connectionState => _connectionState;
   bool get isConnected => _connectionState == WebSocketConnectionState.connected;

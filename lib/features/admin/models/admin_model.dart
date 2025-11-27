@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../shared/models/user_model.dart';
+import '../../../shared/models/user_model.dart';
 
 part 'admin_model.freezed.dart';
 part 'admin_model.g.dart';
