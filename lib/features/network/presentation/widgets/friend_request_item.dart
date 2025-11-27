@@ -101,7 +101,7 @@ class FriendRequestItem extends ConsumerWidget {
                   Expanded(
                     child: TuxButton(
                       label: 'Decline',
-                      variant: ButtonVariant.outlined,
+                      variant: TuxButtonVariant.secondary,
                       onPressed: () {
                         ref.read(friendRequestsProvider.notifier)
                             .declineRequest(request.id);
@@ -147,5 +147,3 @@ class FriendRequestItem extends ConsumerWidget {
     }
   }
 }
-
-enum ButtonVariant { filled, outlined }

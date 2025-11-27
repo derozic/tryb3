@@ -52,7 +52,19 @@ dependencies:
   cached_network_image: ^3.3.0
   shimmer: ^3.0.0
   animations: ^2.0.8
+  table_calendar: ^3.0.9
   cupertino_icons: ^1.0.8
+  
+  # File & Location handling
+  file_picker: ^8.0.0
+  geolocator: ^13.0.0
+  google_maps_flutter: ^2.5.3
+  
+  # Database
+  drift: ^2.14.0
+  sqlite3_flutter_libs: ^0.5.0
+  path_provider: ^2.1.1
+  path: ^1.8.3
 
   # Utilities
   freezed_annotation: ^2.4.1
@@ -67,6 +79,12 @@ dependencies:
   
   # WebSocket
   web_socket_channel: ^2.4.0
+
+  # Authentication
+  google_sign_in: ^6.2.1
+  dart_jsonwebtoken: ^2.14.0
+  http: ^1.2.0
+  crypto: ^3.0.3
 
   # Date & Time
   intl: ^0.19.0
