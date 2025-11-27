@@ -7,7 +7,7 @@ part 'auth_providers.g.dart';
 @Riverpod(keepAlive: true)
 class AuthNotifier extends _$AuthNotifier {
   @override
-  User? build() {
+  UserModel? build() {
     _initializeAuth();
     return null;
   }

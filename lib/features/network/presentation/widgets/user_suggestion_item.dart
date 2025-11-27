@@ -147,7 +147,7 @@ class UserSuggestionItem extends ConsumerWidget {
                 const SizedBox(width: TuxSpacing.md),
                 TuxButton(
                   label: 'View Profile',
-                  variant: ButtonVariant.outlined,
+                  variant: TuxButtonVariant.secondary,
                   onPressed: () {
                     // TODO: Navigate to profile
                   },

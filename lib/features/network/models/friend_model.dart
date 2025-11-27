@@ -10,7 +10,7 @@ class FriendConnection with _$FriendConnection {
     required String id,
     required String userId,
     required String friendId,
-    required User friend,
+    required UserModel friend,
     required FriendshipStatus status,
     required DateTime createdAt,
     DateTime? acceptedAt,
@@ -29,9 +29,9 @@ class FriendRequest with _$FriendRequest {
   const factory FriendRequest({
     required String id,
     required String senderId,
-    required User sender,
+    required UserModel sender,
     required String receiverId,
-    required User receiver,
+    required UserModel receiver,
     String? message,
     required FriendRequestStatus status,
     required DateTime createdAt,
@@ -55,9 +55,9 @@ class SendFriendRequestModel with _$SendFriendRequestModel {
 @freezed
 class UserSuggestion with _$UserSuggestion {
   const factory UserSuggestion({
-    required User user,
+    required UserModel user,
     required SuggestionReason reason,
-    @Default([]) List<User> mutualFriends,
+    @Default([]) List<UserModel> mutualFriends,
     @Default(0) int mutualFriendsCount,
     @Default(0.0) double relevanceScore,
   }) = _UserSuggestion;
@@ -73,7 +73,7 @@ class NetworkStats with _$NetworkStats {
     required int sentRequestsCount,
     required int mutualConnectionsCount,
     required int blockedUsersCount,
-    @Default([]) List<User> recentConnections,
+    @Default([]) List<UserModel> recentConnections,
     @Default([]) List<UserSuggestion> suggestions,
   }) = _NetworkStats;
 
